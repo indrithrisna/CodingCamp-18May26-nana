@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header__greeting">
+      <p id="greeting-text" class="greeting-text">Good morning!</p>
+      <h1 id="greeting-name" class="greeting-name">Friend</h1>
+      <p id="datetime-text" class="datetime-text"></p>
+    </div>
+    <div class="header__controls">
+      <button id="btn-name" class="btn btn--icon" title="Change name">✏️</button>
+      <button id="btn-theme" class="btn btn--icon" title="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <!-- ===== NAME MODAL ===== -->
+  <div id="modal-name" class="modal hidden">
+    <div class="modal__box">
+      <h2>What's your name?</h2>
+      <input id="input-name" type="text" class="input" placeholder="Enter your name…" maxlength="30" />
+      <div class="modal__actions">
+        <button id="btn-name-cancel" class="btn btn--secondary">Cancel</button>
+        <button id="btn-name-save" class="btn btn--primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN GRID ===== -->
+  <main class="dashboard">
+
+    <!-- FOCUS TIMER -->
+    <section class="card card--timer">
+      <h2 class="card__title">⏱ Focus Timer</h2>
+      <div class="timer__display" id="timer-display">25:00</div>
+      <div class="timer__duration">
+        <label for="timer-minutes">Session (min):</label>
+        <input id="timer-minutes" type="number" class="input input--small" value="25" min="1" max="99" />
+      </div>
+      <div class="timer__controls">
+        <button id="btn-start" class="btn btn--primary">Start</button>
+        <button id="btn-stop" class="btn btn--secondary">Stop</button>
+        <button id="btn-reset" class="btn btn--secondary">Reset</button>
+      </div>
+      <p id="timer-status" class="timer__status"></p>
+    </section>
+
+    <!-- TO-DO LIST -->
+    <section class="card card--todo">
+      <h2 class="card__title">✅ To-Do List</h2>
+      <div class="todo__input-row">
+        <input id="input-task" type="text" class="input" placeholder="Add a new task…" maxlength="100" />
+        <button id="btn-add-task" class="btn btn--primary">Add</button>
+      </div>
+      <div class="todo__filters">
+        <button class="btn btn--filter active" data-filter="all">All</button>
+        <button class="btn btn--filter" data-filter="active">Active</button>
+        <button class="btn btn--filter" data-filter="done">Done</button>
+        <select id="sort-select" class="input input--small">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+        </select>
+      </div>
+      <p id="duplicate-warning" class="warning hidden">⚠️ Task already exists!</p>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="task-empty" class="empty-msg">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="card card--links">
+      <h2 class="card__title">🔗 Quick Links</h2>
+      <div class="links__input-row">
+        <input id="input-link-name" type="text" class="input" placeholder="Label" maxlength="30" />
+        <input id="input-link-url" type="url" class="input" placeholder="https://…" />
+        <button id="btn-add-link" class="btn btn--primary">Add</button>
+      </div>
+      <div id="link-list" class="link-list"></div>
+      <p id="link-empty" class="empty-msg">No links yet. Add one above!</p>
+    </section>
+
+  </main>
+
+  <!-- ===== EDIT TASK MODAL ===== -->
+  <div id="modal-edit" class="modal hidden">
+    <div class="modal__box">
+      <h2>Edit Task</h2>
+      <input id="input-edit-task" type="text" class="input" maxlength="100" />
+      <div class="modal__actions">
+        <button id="btn-edit-cancel" class="btn btn--secondary">Cancel</button>
+        <button id="btn-edit-save" class="btn btn--primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
